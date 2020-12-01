@@ -17,11 +17,11 @@ FROM linuxserver/code-server
 #   LABEL
 LABEL maintainer="bobbyw@gmail.com"
 LABEL version="0.1"
-LABEL description="This is a custom image for running vscode with PowerShell and PowerCLI installed"
+LABEL description="(vs)code with PowerShell and PowerCLI installed"
 #   Set Working directory
 WORKDIR /root
 #   Update repos and install wget
-RUN apt update && apt install wget -y
+RUN apt-get update && apt-get install wget -y
 #   Upgrade all software
 RUN sudo apt-get upgrade -y
 #   Install requirement that won't install automatically
