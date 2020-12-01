@@ -33,7 +33,7 @@ RUN sudo dpkg -i /root/powershell.deb
 #   Start Powershell
 SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 #   Install PowerCLI
-RUN Install-Module -Name VMware.PowerCLI -force
+RUN Install-Module -Name VMware.PowerCLI -Scope AllUsers -force
 #   Configure PoweCLI settings
 RUN Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -DefaultVIServerMode Multiple -DisplayDeprecationWarnings $false -Confirm:$false
 #   Entry point
