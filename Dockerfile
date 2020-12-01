@@ -25,13 +25,11 @@ RUN apt update && apt install wget -y
 #   Upgrade all software
 RUN sudo apt-get upgrade -y
 #   Install requirement that won't install automatically
-RUN sudo apt-get install -y liblttng-ust0 libicu60
+RUN sudo apt-get install -y liblttng-ust0 libicu60 curl
 #   Get powershell installation
 RUN wget -O /root/powershell.deb https://github.com/PowerShell/PowerShell/releases/download/v7.0.3/powershell_7.0.3-1.ubuntu.18.04_amd64.deb
-#   Install Powershell and exit with code 0 due to missing dependencies && Force Powershell installation after dkpg errors
+#   Install Powershell
 RUN sudo dpkg -i /root/powershell.deb
-#   Install curl
-# RUN sudo apt-get install curl -y
 #   Start Powershell
 SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 #   Install PowerCLI
